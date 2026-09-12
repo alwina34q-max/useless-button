@@ -6,92 +6,55 @@
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Danger Boys]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: [Alwin Anto] - [Ace College of engineering]
+- Member 2: [Abhishek Biju] - [Ace College of engineering]
 
 ### Project Description
-[2-3 lines about what your project does]
+[it is a simple useless button that u click to get score in the leaderboard]
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+[there is nothing to do when we are bored]
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+[click on the button to reduce your boreness]
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- [Languages used:JavaScript, HTML, CSS]
+- [Frameworks used:React]
+- [Libraries used:React, Lucide React]
+- [Tools used:GitHub, Vite, VS Code]
 
 ### Implementation
-For Software:
+For Software:Web Application
 # Installation
-[commands]
+[npm install
+npm run dev]
 
 # Run
-[commands]
+[npm run dev]
 
 ### Project Documentation
-For Software:
+For Software:GitHub README.md
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1](<img width="589" height="1280" alt="WhatsApp Image 2026-09-12 at 6 25 38 AM" src="https://github.com/user-attachments/assets/53deb7a2-29b7-46da-96eb-c4cd66617f30" />)
+*this screenshot shows the layout of the website and the basics of what it does
+*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2](<img width="589" height="1280" alt="WhatsApp Image 2026-09-12 at 6 28 38 AM" src="https://github.com/user-attachments/assets/d5902168-c748-41f6-801e-6941f0e747fa" />)
+*This image shows the global leaderboard that shows the top players that clicked the longest*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+![Workflow](workflow.png)
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+*caption:The player opens the game → the player clicks the button → The player clicks  the longest gets on the top 10 leaderboard → the player tries to survive for as long as possible → the score is automatically submitted to the global leaderboard
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
