@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Useless Button — Infinite Clicking Challenge</title>
+  <meta property="og:title" content="Useless Button — Infinite Clicking Challenge" />
+  <meta property="og:description" content="Click a completely useless button forever and compete for the global leaderboard." />
+  <meta property="og:image" content="/cover.svg" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <style>
+    :root { --bg:#f5f0e8; --ink:#171717; --muted:#77716a; --card:#fffdf8; --accent:#ff5c35; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100dvh; padding:28px 20px 40px; background:radial-gradient(circle at 50% 0%,#fffaf0 0,#f5f0e8 48%,#e9e1d6 100%); color:var(--ink); font-family:ui-sans-serif,system-ui,sans-serif; }
+    .wrap { width:min(900px,100%); margin:auto; text-align:center; }
+    #meta { color:var(--muted); font-size:12px; letter-spacing:.04em; }
+    h1 { font-size:clamp(40px,12vw,72px); line-height:.9; margin:20px 0 10px; letter-spacing:-.06em; }
+    .sub { color:var(--muted); margin:0 auto 26px; max-width:500px; }
+    .grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.72fr); gap:22px; align-items:start; text-align:left; }
+    .card { background:var(--card); border:2px solid var(--ink); border-radius:24px; padding:clamp(20px,5vw,30px); box-shadow:8px 8px 0 var(--ink); text-align:center; }
+    .counter { font-size:clamp(64px,10vw,100px); font-weight:900; line-height:1; letter-spacing:-.06em; overflow:hidden; }
+    .label { color:var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:.12em; margin:7px 0 24px; }
+    #useless-button { width:100%; min-height:64px; border:3px solid var(--ink); border-radius:18px; padding:21px 14px; background:var(--accent); color:white; font-weight:900; font-size:18px; letter-spacing:.04em; cursor:pointer; box-shadow:0 7px 0 var(--ink); }
+    #useless-button:not(:disabled):active { transform:translateY(6px); box-shadow:0 1px 0 var(--ink); }
+    #useless-button:disabled { opacity:.45; cursor:not-allowed; }
+    #message { min-height:24px; color:var(--muted); margin:20px 0 4px; }
+    #status { font-weight:800; margin:0 0 16px; }
+    #status.error { color:#c33; }
+    #reset { background:none; border:0; text-decoration:underline; cursor:pointer; color:var(--muted); }
+    .board { background:var(--card); border:2px solid var(--ink); border-radius:24px; padding:22px; box-shadow:6px 6px 0 var(--ink); }
+    .board h2 { margin:0 0 4px; font-size:24px; letter-spacing:-.04em; }
+    .board p { margin:0 0 16px; color:var(--muted); font-size:13px; }
+    .rank { display:grid; grid-template-columns:42px 1fr auto; gap:10px; padding:12px 0; border-top:1px solid #ddd5ca; align-items:center; font-size:14px; }
+    .rank span { color:var(--muted); } .rank strong { font-variant-numeric:tabular-nums; }
+    .empty { color:var(--muted); font-size:13px; padding:16px 0; }
+    .modal-backdrop { position:fixed; inset:0; z-index:10; display:grid; place-items:center; padding:20px; background:rgba(23,23,23,.72); backdrop-filter:blur(6px); }
+    .name-modal { width:min(430px,100%); background:var(--card); border:3px solid var(--ink); border-radius:24px; padding:30px; box-shadow:10px 10px 0 var(--ink); text-align:center; }
+    .name-modal .eyebrow { color:var(--accent); font-size:11px; font-weight:900; letter-spacing:.12em; margin:0 0 10px; }
+    .name-modal h2 { margin:0 0 8px; font-size:32px; letter-spacing:-.05em; }
+    .name-modal p:not(.eyebrow) { color:var(--muted); font-size:14px; line-height:1.4; margin:0 0 20px; }
+    #username-input { width:100%; min-height:54px; border:2px solid var(--ink); border-radius:14px; padding:14px; font:inherit; font-size:16px; margin-bottom:12px; outline:none; }
+    #username-input:focus { box-shadow:0 0 0 3px rgba(255,92,53,.25); }
+    .name-modal button { width:100%; min-height:58px; border:3px solid var(--ink); border-radius:16px; background:var(--accent); color:white; font-weight:900; cursor:pointer; padding:14px; touch-action:manipulation; }
+    .tiny { font-size:11px; color:#aaa39a; margin-top:22px; }
+    @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
+    @media (max-width: 600px) {
+      body { padding:12px; align-items:start; }
+      .wrap { padding-top:clamp(10px,5vh,32px); }
+      #meta { font-size:11px; line-height:1.4; }
+      h1 { margin:14px 0 8px; }
+      .sub { font-size:14px; line-height:1.45; margin-bottom:18px; }
+      .card { box-shadow:5px 5px 0 var(--ink); }
+      .counter { font-size:clamp(58px,18vw,72px); }
+      .label { font-size:11px; }
+      #useless-button { min-height:68px; font-size:17px; padding:18px 12px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+      #reset { padding:10px 12px; font-size:14px; }
+      #message { font-size:14px; line-height:1.4; }
+      #status { font-size:14px; }
+      .tiny { margin-top:12px; }
+    }
+    @media (max-width: 380px) {
+      body { padding:9px; }
+      .name-modal { padding:24px 18px; }
+      .name-modal h2 { font-size:27px; }
+      .wrap { padding-top:8px; }
+      .card { padding:18px 14px; border-radius:20px; }
+      h1 { font-size:38px; }
+      .sub { font-size:13px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="name-modal" class="modal-backdrop">
+    <form id="name-form" class="name-modal">
+      <p class="eyebrow">WELCOME TO THE CLICKER CLUB</p>
+      <h2>Choose your username</h2>
+      <p>Your name will appear on the global leaderboard.</p>
+      <input id="username-input" maxlength="20" autocomplete="nickname" placeholder="Enter username" required />
+      <button type="submit">ENTER YOUR USERNAME</button>
+    </form>
+  </div>
+  <main class="wrap">
+    <p id="meta">Connecting…</p>
+    <h1>USELESS<br>BUTTON</h1>
+    <p class="sub">There is no finish line anymore. Click forever. Reach an absurd score. Become a legend on the global leaderboard.</p>
+    <div class="grid">
+      <section class="card">
+        <div class="counter" id="count">0</div>
+        <div class="label">useless clicks</div>
+        <button id="useless-button">THE BUTTON</button>
+        <p id="message">Press the button. There is no reason.</p>
+        <p id="status">Connecting…</p>
+        <button id="reset">Reset my counter</button>
+      </section>
+      <aside class="board">
+        <h2>Global leaderboard</h2>
+        <p>Scores update as players reach new milestones.</p>
+        <div id="leaderboard"><div class="empty">Loading legends…</div></div>
+      </aside>
+    </div>
+    <p class="tiny">The world's least productive infinite competition.</p>
+  </main>
+  <script type="module" src="/client.js"></script>
+</body>
+</html>
