@@ -2,7 +2,7 @@
 
 
 
-# [Project Name] 🎯
+# [Useless Button] 🎯
 
 
 ## Basic Details
@@ -44,8 +44,8 @@ For Software:GitHub README.md
 
 # Screenshots (Add at least 3)
 ![Screenshot1](<img width="589" height="1280" alt="WhatsApp Image 2026-09-12 at 6 25 38 AM" src="https://github.com/user-attachments/assets/53deb7a2-29b7-46da-96eb-c4cd66617f30" />)
-*this screenshot shows the layout of the website and the basics of what it does
-*
+*This screenshot shows the layout of the website and the basics of what it does*
+
 
 ![Screenshot2](<img width="589" height="1280" alt="WhatsApp Image 2026-09-12 at 6 28 38 AM" src="https://github.com/user-attachments/assets/d5902168-c748-41f6-801e-6941f0e747fa" />)
 *This image shows the global leaderboard that shows the top players that clicked the longest*
@@ -54,7 +54,7 @@ For Software:GitHub README.md
 # Diagrams
 ![Workflow](workflow.png)
 
-*caption:The player opens the game → the player clicks the button → The player clicks  the longest gets on the top 10 leaderboard → the player tries to survive for as long as possible → the score is automatically submitted to the global leaderboard
+*caption:The player opens the game → the player clicks the button → The player clicks  the longest gets on the top 10 leaderboard → the player tries to survive for as long as possible → the score is automatically submitted to the global leaderboard*
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
